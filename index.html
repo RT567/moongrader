@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300" rel="stylesheet" type="text/css">
     <title>MoonGrader</title>
+    <!-- The ring rows are 1000px-wide boxes, which add a stray horizontal scrollbar. Hide it only where the
+         whole board (20% + 400px) fits; narrow screens still need to scroll to reach the right-hand holds. -->
+    <style>@media (min-width: 600px) { body { overflow-x: hidden; } }</style>
   </head>
   <body>
     <noscript>

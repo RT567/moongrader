@@ -67,3 +67,15 @@ mkdir -p /tmp/srv && ln -sfn ~/silly/moongrader /tmp/srv/moongrader && (cd /tmp/
 - Only the 2019 MoonBoard layout; holds grid is pixel-tuned to `mb2019.jpg` at 400×600.
 - No "wake the server" ping on page load (would hide most of the cold start). Easy win if wanted: `GET https://moonboard-fastapi.onrender.com/` on mount.
 - Error text is generic; the backend's own error strings arrive as `grade` ("Error occurred: …") and will be shown as if they were a grade.
+
+## 2026-10-05 — header tidy (Rob: spinner + slow-inference text were hiding behind the board)
+
+The board, rings and hold buttons are absolutely positioned at top 300px / left 20% (untouched, by Rob's
+request: "leave the risky areas and work around them"). The fix only changes what sits above them, which
+must end before y=300: smaller gaps, one short intro line + a muted "Prototype…" line, buttons side by
+side (grade climb is primary), a fixed 60px status box, and plain `[:p]` instead of `re-com/p` (that one
+forces width 450px). The header column is 400px wide with `margin-left: 20%` so it lines up over the board.
+`index.html` hides the horizontal scrollbar at ≥600px only (the ring rows are 1000px-wide boxes); narrow
+screens still scroll to reach the right-hand holds. Request body verified unchanged
+(`{"holds":["A18","J17","F13","K8","D1"]}` for the same clicks). Grading status ends at y≈245.
+Still not done: the board overflows on phones (needs the board's 20% offset changed in three places).
