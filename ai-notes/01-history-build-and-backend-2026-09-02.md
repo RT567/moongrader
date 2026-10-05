@@ -79,3 +79,15 @@ forces width 450px). The header column is 400px wide with `margin-left: 20%` so 
 screens still scroll to reach the right-hand holds. Request body verified unchanged
 (`{"holds":["A18","J17","F13","K8","D1"]}` for the same clicks). Grading status ends at y≈245.
 Still not done: the board overflows on phones (needs the board's 20% offset changed in three places).
+
+### Later 2026-10-05 — board centred and fully on screen on phones
+- Board image, rings and hold buttons now all use `board-left` = `max(0px, calc(50% - 200px))` (views.cljs)
+  instead of three separate `"20%"`s. Verified against the live site: all 198 buttons + 198 rings sit at the
+  same offsets from the board image (max 0.125px subpixel difference); POST body unchanged.
+- `index.html`: phones narrower than 430px get `<meta viewport width=430>` (browser scales the page to fit;
+  no layout maths changes). `#app` is `position: relative` + `overflow-x: clip` (fallback: hidden +
+  min-height 940px) so the 1000px-wide ring rows can't widen the page. `#app` is now the board's
+  containing block, at the same top-left as the page.
+- Logo 80→64px wide (was stretched).
+- Backend check: direct POST of the test climb → V3 in 51s with the service already awake; through the live
+  site 98s. It works, it's just slow.

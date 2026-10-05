@@ -9,9 +9,15 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300" rel="stylesheet" type="text/css">
     <title>MoonGrader</title>
-    <!-- The ring rows are 1000px-wide boxes, which add a stray horizontal scrollbar. Hide it only where the
-         whole board (20% + 400px) fits; narrow screens still need to scroll to reach the right-hand holds. -->
-    <style>@media (min-width: 600px) { body { overflow-x: hidden; } }</style>
+    <!-- Phones narrower than the 400px board get a 430px-wide layout that the browser scales to fit, so the
+         pixel-tuned board/rings/buttons never need to change size. -->
+    <script>if (Math.min(screen.width, screen.height) < 430) document.querySelector('meta[name=viewport]').setAttribute('content', 'width=430');</script>
+    <!-- The ring rows are 1000px-wide boxes. Clip them at #app (made the positioned ancestor of the board, at the
+         same top-left as the page) so they can't add a scrollbar or make phones zoom out to fit them. -->
+    <style>
+      #app { position: relative; overflow: hidden; min-height: 940px; }
+      @supports (overflow-x: clip) { #app { overflow: visible; overflow-x: clip; min-height: 0; } }
+    </style>
   </head>
   <body>
     <noscript>
