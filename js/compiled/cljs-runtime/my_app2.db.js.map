@@ -1,1 +1,0 @@
-{"version":3,"sources":["my_app2/db.cljs"],"mappings":";AAEA,wBAAA,2CAAA,qDAAA,WAAA,wEAAA,iCAAA,uDAAA,KAAA,qDAAA,MAAA,uDAAA,1ZAAKA","names":["my-app2.db/default-db"],"sourcesContent":["(ns my-app2.db)\r\n\r\n(def default-db\r\n  {:name           \"re-frame\"\r\n   :selected-holds []\r\n   :grade          \"V3\"\r\n   :flag           false\r\n   :error          nil})\r\n"]}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["my_app2/config.cljs"],"mappings":";AAEA,AAAKA,8BACMC","names":["my-app2.config/debug?","js/goog.DEBUG"],"sourcesContent":["(ns my-app2.config)\r\n\r\n(def debug?\r\n  ^boolean goog.DEBUG)\r\n"]}

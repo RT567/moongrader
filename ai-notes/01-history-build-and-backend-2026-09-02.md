@@ -91,3 +91,12 @@ Still not done: the board overflows on phones (needs the board's 20% offset chan
 - Logo 80→64px wide (was stretched).
 - Backend check: direct POST of the test climb → V3 in 51s with the service already awake; through the live
   site 98s. It works, it's just slow.
+
+### Later 2026-10-05 — cleanup
+- Deleted from this repo: `js/compiled/cljs-runtime/` (38 MB of dev-build output; the release `app.js` is
+  self-contained and never loads it), unused ring PNGs (only `blue-ring-thick.png` is used), and the stale
+  `working_for_prod.html`.
+- Source (`moonboard-stack/my-app2`): removed `routes.cljs`/`styles.cljs` (unused), the dead
+  `:grade-climb-old-broken` event, debug prints, `::name` sub, `db-value`, unused requires. Unused deps
+  (bidi, pushy, garden, spade) are still in `shadow-cljs.edn`; harmless, left alone.
+- Verified after cleanup: geometry vs live identical (≤0.125px), POST body unchanged, real grade → V3 (52 s).
